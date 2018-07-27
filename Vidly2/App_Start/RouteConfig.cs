@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Vidly2.Controllers;
 
 namespace Vidly2
 {
@@ -12,6 +13,14 @@ namespace Vidly2
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapMvcAttributeRoutes();
+
+            //routes.MapRoute(
+            //    name: "ByReleaseDate",
+            //    url: "movies/released/{year}/{month}",
+            //    defaults: new { controller = "Movies", action = "ByReleaseDate"}
+            //    );
 
             routes.MapRoute(
                 name: "Default",
