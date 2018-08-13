@@ -27,11 +27,11 @@ namespace Vidly2.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            RandomMovieViewModel randomMovieViewModel = new RandomMovieViewModel()
-            {
-                Customers = _context.Customers.Include(c=>c.MembershipType).ToList()
-            };
-            return View(randomMovieViewModel);
+            //RandomMovieViewModel randomMovieViewModel = new RandomMovieViewModel()
+            //{
+            //    Customers = _context.Customers.Include(c=>c.MembershipType).ToList()
+            //}; hello
+            return View();
         }
 
         public IEnumerable<Customer> GetCustomers()
