@@ -18,7 +18,10 @@ namespace Vidly2
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Formatting.Indented;
-            config.Formatters.JsonFormatter.MediaTypeMappings.Add(new RequestHeaderMapping("Accept","text/html",StringComparison.InvariantCultureIgnoreCase,true,"application/json"));
+
+            // Default http response as a JSON
+            config.Formatters.JsonFormatter.MediaTypeMappings
+                .Add(new RequestHeaderMapping("Accept","text/html",StringComparison.InvariantCultureIgnoreCase,true,"application/json"));
 
             config.MapHttpAttributeRoutes();
 
