@@ -11,6 +11,7 @@ namespace Vidly2
 {
     public partial class Startup
     {
+        
         // Aby uzyskać więcej informacji o konfigurowaniu uwierzytelniania, odwiedź stronę https://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -18,6 +19,10 @@ namespace Vidly2
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            //app.UseIdentityManager(new IdentityManagerConfiguration())
+            //{
+            //    UserManagerFactory = Thinktecture.IdentityManager.AspNetIdentity.UserManagerFactory.Create
+            //}
 
             // Zezwalaj aplikacji na przechowywanie w pliku cookie informacji o zalogowanym użytkowniku
             // oraz na tymczasowe przechowywanie w pliku cookie informacji o użytkowniku logującym się przy użyciu dostawcy logowania innego producenta
@@ -54,9 +59,9 @@ namespace Vidly2
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "2230196673660501",
+               appSecret: "ea24e28892a934e0789b550a0fc4b8c6");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

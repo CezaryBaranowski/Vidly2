@@ -16,6 +16,8 @@ namespace Vidly2.DTOs
         [Required]
         public byte GenreId { get; set; }
 
+        public GenreDto Genre { get; set; }  
+
         public DateTime? ReleasedDate { get; set; }
 
         [DateAddedGreaterThanDateReleased]

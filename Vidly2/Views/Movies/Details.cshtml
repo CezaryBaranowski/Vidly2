@@ -12,7 +12,7 @@
         Genre: @Model.Genre.Name
     </li>    
     <li>
-        Released: @Model.ReleasedDate.ToShortDateString()
+        Released: @Model.ReleasedDate.Value.ToShortDateString()
     </li>    
     <li>
         Added to Database: @Model.DateAdded.ToShortDateString()

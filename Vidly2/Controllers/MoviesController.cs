@@ -25,28 +25,33 @@ namespace Vidly2.Controllers
 
         public ActionResult Index(int? page, string sortBy)
         {
-
-            RandomMovieViewModel viewModel = new RandomMovieViewModel()
-            {
-                Movies = _context.Movies.Include(m => m.Genre).ToList()
-            };
-            return View(viewModel);
+            if (User.IsInRole(RoleName.CanManageMovies))
+                return View("List");
+             return View("ReadOnlyList");
 
         }
-
+        
         public ActionResult Details(int? id)
         {
+
             var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
             var genres = _context.Genres.ToList();
             var viewModel = new MovieFormViewModel(movie)
             {
                 Genres = genres
             };
+            
             if (viewModel.Id != null)
-                return View("MovieForm", viewModel);
+                if (User.IsInRole(RoleName.CanManageMovies))
+                    return View("MovieForm", viewModel);
+                else
+                    return View("Details", movie);
+
             return HttpNotFound();
+            
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
@@ -60,6 +65,7 @@ namespace Vidly2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Save(Movie movie)
         {
             if (!ModelState.IsValid)
@@ -89,10 +95,10 @@ namespace Vidly2.Controllers
             return RedirectToAction("Index", "Movies");
         }
 
-        [Route("movies/released/{year}/{month:regex(\\d{2})}")]
-        public ActionResult ByReleaseDate(int year, int month)
-        {
-            return Content(year + "/" + month);
-        }
+        //[Route("movies/released/{year}/{month:regex(\\d{2})}")]
+        //public ActionResult ByReleaseDate(int year, int month)
+        //{
+        //    return Content(year + "/" + month);
+        //}
     }
 }
