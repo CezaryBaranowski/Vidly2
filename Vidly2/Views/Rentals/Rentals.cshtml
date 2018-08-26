@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "All Rentals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Rentals</h2>
+
+<div>
+    @Html.ActionLink("New Rental", "New", "Rentals", null, new{@class = "btn btn-primary"})
+    @Html.ActionLink("Delete Selected Rentals", "Delete", "Rentals", null, new{@class = "btn btn-primary", @style = "color:orange"})
+</div>
+
+<table id="rentals" class ="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Customer</th>
+            <th>Date Rented</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function() {
+            var table = $("#rentals").DataTable({
+                ajax: {
+                    url: "/api/AllRentals",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "customerName",
+                        render: function(data, type, rental) {
+                            return "<a href=/customer/details/" + rental.customerId + ">" + data;
+                        }
+                    },
+                    {
+                        data: "movieName",
+                        render: function(data, type, rental) {
+                            return "<a href=/movies/details/" + rental.movieId + ">" + data;
+                        }
+                    },
+                    {
+                        data: "dateRented"
+                    },
+                    {
+                        render: function() {
+                            return "<input type='checkbox' class = 'select-checkbox'>";
+                        }
+                    }
+                ],
+                columnDefs: [
+                    {
+                        orderable: false,
+                        className: 'select-checkbox',
+                        targets: 3
+                    }
+                ],
+                select: {
+                    style: 'os',
+                    selector: 'td:last-child'
+                },
+                order: [[1, 'asc']]
+            });
+        })
+
+    </script>
+}

@@ -1,8 +1,7 @@
 namespace Vidly2.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class Reset : DbMigration
     {
         public override void Up()
@@ -20,7 +19,7 @@ namespace Vidly2.Migrations
             //    .PrimaryKey(t => t.Id)
             //    .ForeignKey("dbo.MembershipTypes", t => t.MembershipTypeId, cascadeDelete: true)
             //    .Index(t => t.MembershipTypeId);
-            
+
             //CreateTable(
             //    "dbo.MembershipTypes",
             //    c => new
@@ -32,7 +31,7 @@ namespace Vidly2.Migrations
             //            Name = c.String(nullable: false),
             //        })
             //    .PrimaryKey(t => t.Id);
-            
+
             //CreateTable(
             //    "dbo.Genres",
             //    c => new
@@ -41,7 +40,7 @@ namespace Vidly2.Migrations
             //            Name = c.String(nullable: false),
             //        })
             //    .PrimaryKey(t => t.Id);
-            
+
             //CreateTable(
             //    "dbo.Movies",
             //    c => new
@@ -56,7 +55,7 @@ namespace Vidly2.Migrations
             //    .PrimaryKey(t => t.Id)
             //    .ForeignKey("dbo.Genres", t => t.GenreId, cascadeDelete: true)
             //    .Index(t => t.GenreId);
-            
+
             //CreateTable(
             //    "dbo.AspNetRoles",
             //    c => new
@@ -66,7 +65,7 @@ namespace Vidly2.Migrations
             //        })
             //    .PrimaryKey(t => t.Id)
             //    .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
+
             //CreateTable(
             //    "dbo.AspNetUserRoles",
             //    c => new
@@ -79,7 +78,7 @@ namespace Vidly2.Migrations
             //    .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
             //    .Index(t => t.UserId)
             //    .Index(t => t.RoleId);
-            
+
             //CreateTable(
             //    "dbo.AspNetUsers",
             //    c => new
@@ -99,7 +98,7 @@ namespace Vidly2.Migrations
             //        })
             //    .PrimaryKey(t => t.Id)
             //    .Index(t => t.UserName, unique: true, name: "UserNameIndex");
-            
+
             //CreateTable(
             //    "dbo.AspNetUserClaims",
             //    c => new
@@ -112,7 +111,7 @@ namespace Vidly2.Migrations
             //    .PrimaryKey(t => t.Id)
             //    .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
             //    .Index(t => t.UserId);
-            
+
             //CreateTable(
             //    "dbo.AspNetUserLogins",
             //    c => new
@@ -124,9 +123,9 @@ namespace Vidly2.Migrations
             //    .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
             //    .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
             //    .Index(t => t.UserId);
-            
+
         }
-        
+
         public override void Down()
         {
             //DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");

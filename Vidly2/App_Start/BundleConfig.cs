@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace Vidly2
 {
@@ -14,7 +13,11 @@ namespace Vidly2
                 "~/Scripts/bootbox.js",
                 "~/Scripts/respond.js",
                 "~/Scripts/datatables/jquery.datatables.js",
-                "~/Scripts/datatables/datatables.bootstrap.js"
+                "~/Scripts/datatables/jquery.datatables.min.js",
+                "~/Scripts/datatables/datatables.bootstrap.js",
+                "~/Scripts/typeahead.bundle.js",
+                "~/Scripts/datatables/dataTables.select.min.js",
+                "~/Scripts/toastr.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -24,10 +27,12 @@ namespace Vidly2
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/Scripts/modernizr-*"));
-                
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap-lumen.css",
                 "~/Content/datatables.css/datatables.bootstrap.css",
+                "~/Content/typeahead.css",
+                "~/Content/toastr.css",
                 "~/Content/site.css"));
         }
     }
